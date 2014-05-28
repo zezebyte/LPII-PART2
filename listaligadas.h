@@ -44,13 +44,13 @@ void ClearLR(ApListaRolos);
 void ClearLP(ApListaPacks);
 void ClearLG(ApListaGuias);
 void ClearLE(ApListaExpds);
-int ProcuraCodRolo(ApArmazem, char);
+int ProcuraCodRolo(ApArmazem, char[]);
 int ProcuraCodPack(ApArmazem ,int);
 int ProcuraCodPackExp(ApNoListaExpds, int);
 int ProcuraPackExpds(ApArmazem, int);
 int ProcuraPackGuias(ApArmazem, int);
-int ProcuraRoloGuia(ApArmazem, char);
-int ProcuraRoloExpd(ApArmazem, char);
+int ProcuraRoloGuia(ApArmazem, char[]);
+int ProcuraRoloExpd(ApArmazem, char[]);
 
 #endif
 
