@@ -6,6 +6,8 @@
  */
 #include <stdio.h>
 #include <stdlib.h>
+#include "queue.h"
+#include "stack.h"
 #include "types.h"
 #ifndef LISTALIGADAS_H
 #define	LISTALIGADAS_H
@@ -30,10 +32,10 @@ ApNoListaRolos DeleteLR(ApListaRolos, int);
 ApNoListaPacks DeleteLP(ApListaPacks, int);
 ApNoListaGuias DeleteLG(ApListaGuias, int);
 ApNoListaExpds DeleteLE(ApListaExpds, int);
-void InsertLR(ApListaRolos, ApNoListaRolos, int);
-void InsertLP(ApListaPacks, ApNoListaPacks, int);
-void InsertLG(ApListaGuias, ApNoListaGuias, int);
-void InsertLE(ApListaExpds, ApNoListaExpds, int);
+int InsertLR(ApListaRolos, ApNoListaRolos, int);
+int InsertLP(ApListaPacks, ApNoListaPacks, int);
+int InsertLG(ApListaGuias, ApNoListaGuias, int);
+int InsertLE(ApListaExpds, ApNoListaExpds, int);
 void ReplaceLR(ApListaRolos, ApNoListaRolos, int);
 void ReplaceLP(ApListaPacks, ApNoListaPacks, int);
 void ReplaceLG(ApListaGuias, ApNoListaGuias, int);
