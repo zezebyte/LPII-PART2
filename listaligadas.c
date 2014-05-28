@@ -1,5 +1,6 @@
 
 #include "listaligadas.h"
+#include "string.h"
 
 int FullLR(ApListaRolos ApLR){
     return 0;
@@ -179,6 +180,77 @@ int InsertLR(ApListaRolos ApLR, ApNoListaRolos ApNoLR, int pos){
     }
     return 0;
 }
-int InsertLP(ApListaPacks, ApNoListaPacks, int);
-int InsertLG(ApListaGuias, ApNoListaGuias, int);
-int InsertLE(ApListaExpds, ApNoListaExpds, int);
+int InsertLP(ApListaPacks ApLP, ApNoListaPacks ApNoLP, int pos){
+    ApNoListaPacks aux;
+    
+    if(pos>=0 && pos<=SizeLP(ApLP)){
+        if(pos!=0){
+            aux=SetPositionLP(ApLP, pos-1);
+            ApNoLP->NoSeguinte=aux->NoSeguinte;
+            aux->NoSeguinte=ApNoLP;
+        }else{
+            ApNoLP->NoSeguinte=ApLP->cabeca;
+            ApLP->cabeca=ApNoLP;
+        }
+        ApLP->contador=ApLP->contador+1;
+        return 1;
+    }
+    return 0;
+}
+int InsertLG(ApListaGuias ApLG, ApNoListaGuias ApNoLG, int pos){
+    ApNoListaGuias aux;
+    
+    if(pos>=0 && pos<=SizeLG(ApLG)){
+        if(pos!=0){
+            aux=SetPositionLG(ApLG, pos-1);
+            ApNoLG->NoSeguinte=aux->NoSeguinte;
+            aux->NoSeguinte=ApNoLG;
+        }else{
+            ApNoLG->NoSeguinte=ApLG->cabeca;
+            ApLG->cabeca=ApNoLG;
+        }
+        ApLG->contador=ApLG->contador+1;
+        return 1;
+    }
+    return 0;
+}
+int InsertLE(ApListaExpds ApLE, ApNoListaExpds ApNoLE, int pos){
+    ApNoListaExpds aux;
+    
+    if(pos>=0 && pos<=SizeLE(ApLE)){
+        if(pos!=0){
+            aux=SetPositionLE(ApLE, pos-1);
+            ApNoLE->NoSeguinte=aux->NoSeguinte;
+            aux->NoSeguinte=ApNoLE;
+        }else{
+            ApNoLE->NoSeguinte=ApLE->cabeca;
+            ApLE->cabeca=ApNoLE;
+        }
+        ApLE->contador=ApLE->contador+1;
+        return 1;
+    }
+    return 0;
+}
+
+void ClearLR(ApListaRolos ApLR){
+    while(EmptyLR(ApLR)==0){
+        free(DeleteLR(ApLR,0));
+    }
+}
+void ClearLP(ApListaPacks ApLP){
+     while(EmptyLP(ApLP)==0){
+        free(DeleteLP(ApLP,0));
+    }
+}
+void ClearLG(ApListaGuias ApLG){
+     while(EmptyLG(ApLG)==0){
+        free(DeleteLG(ApLG,0));
+    }
+}
+void ClearLE(ApListaExpds ApLE){
+     while(EmptyLE(ApLE)==0){
+        free(DeleteLE(ApLE,0));
+    }
+}
+
+
