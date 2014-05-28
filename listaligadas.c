@@ -253,4 +253,36 @@ void ClearLE(ApListaExpds ApLE){
     }
 }
 
-
+int ProcuraCodRolo(ApArmazem armaz, char codigo[]){
+    int pos=0, tam=SizeLR(&(armaz->lrolos));
+    
+    ApNoListaRolos ApNoRolos=armaz->lrolos.cabeca;
+    
+    while(pos<tam && strcmp(codigo, ApNoRolos->elemento.codigo)!=0){
+        ApNoRolos=ApNoRolos->NoSeguinte;
+        pos++;
+    }
+    if(pos!=tam){
+        return pos;
+    }else{
+        return -1;
+    }
+}
+int ProcuraCodPack(ApArmazem armaz ,int codigo){
+    int pos=0, tam=SizeLP(&(armaz->lpacks));
+    ApNoListaPacks ApNoPack=armaz->lpacks.cabeca;
+    while(pos<tam && codigo!=ApNoPack->elemento.codigo){
+        ApNoPack=ApNoPack->NoSeguinte;
+        pos++;
+    }
+    if(pos!=tam){
+        return pos;
+    }else{
+        return -1;
+    }
+}
+int ProcuraCodPackExp(ApNoListaExpds armaz, int codigo);
+int ProcuraPackExpds(ApArmazem armaz, int codigo);
+int ProcuraPackGuias(ApArmazem armaz, int codigo);
+int ProcuraRoloGuia(ApArmazem armaz, char codigo[]);
+int ProcuraRoloExpd(ApArmazem armaz, char codigo[]);
